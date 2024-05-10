@@ -1,28 +1,19 @@
 #! /bin/bash
 
 #check login dir existance or create it
-if [ ! -f /Users/$USER/Desktop/login ]; then
-
-	mkdir /Users/$USER/Desktop/login
-fi 
+[ -d /Users/$USER/Desktop/login ] || mkdir /Users/$USER/Desktop/login 
 
 #check username.txt existance or create it
-if [ ! -f /Users/$USER/Desktop/login/username.txt ]; then
-
-	touch /Users/$USER/Desktop/login/username.txt
-fi
+[ -f /Users/$USER/Desktop/login/username.txt ] || touch /Users/$USER/Desktop/login/username.txt
 
 #check password.txt existance or create it
-if [ ! -f /Users/$USER/Desktop/login/password.txt ]; then
-	
-	touch /Users/$USER/Desktop/login/password.txt	 
-fi
+[ -f /Users/$USER/Desktop/login/password.txt ] || touch /Users/$USER/Desktop/login/password.txt	 
 
 #ask if user already has account
 read -p "Do you have an account?(Y/N)  " confirmation
 
 #check existing account
-if [ $confirmation == "y" ] || [ $confirmation == "Y" ]; then
+if [[ "$confirmation" =~ [Yy] ]]; then
 	
 	for i in {1..3} 
 	do
@@ -31,7 +22,7 @@ if [ $confirmation == "y" ] || [ $confirmation == "Y" ]; then
 		read -p "password: " password
 
 #check credential inside txt file
-                if [ $(grep -c "$username" /Users/$USER/Desktop/login/username.txt) == 1 ] && [ $(grep -c "$password" /Users/$USER/Desktop/login/password.txt) == 1 ]; then
+        	if grep "$username" /Users/$USER/Desktop/login/username.txt>/dev/null && grep "$password" /Users/$USER/Desktop/login/password.txt>/dev/null; then
 
 				echo "Welcome back $username"
 				break
@@ -46,12 +37,12 @@ if [ $confirmation == "y" ] || [ $confirmation == "Y" ]; then
 	done
 
 #create new account
-elif [ $confirmation == "n" ] || [ $confirmation == "N" ]; then
+elif [[ "$confirmation" =~ [Nn] ]]; then
 
         read -p "username for new account:  " newuser
 
 #if user already exist ask for a new one
-        while [ $(grep -c "$newuser" /Users/$USER/Desktop/login/username.txt) == 1 ]; 
+        while grep "$newuser" /Users/$USER/Desktop/login/username.txt>/dev/null
         do      
 
                 read -p "Username already taken, try again:  " newuser
