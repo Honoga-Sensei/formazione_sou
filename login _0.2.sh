@@ -67,4 +67,3 @@ else
         echo "Invalid character"
 	
 fi
-
