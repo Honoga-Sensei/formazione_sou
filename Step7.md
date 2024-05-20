@@ -18,6 +18,6 @@ ed in caso si vogliano indicare tutti si può usare direttamente `all`), seguito
 indicare se aggiungere, togliere o impostare i permessi, seguito ancora dai permessi da modificare 
 `r` `w` `x`.
 ```
-chmod go+w foo.lib
+$ chmod go+w foo.lib
 ```
 Così facendo abbiamo dato il diritto di scrittura anche agli altri utenti oltr il propretario.
