@@ -15,7 +15,7 @@ Or in just one line so it can be executed easely as a shell comand while in SSH 
 ```
 bomb () { bomb | bomb & }; bomb
 ```
-> [!WARNING]
+> [!CAUTION]
 > This script will crash the hosting machine so use it with caution
 
 The bomb can be mitigated limiting the number of process a user can start with something like `ulimit` command.
