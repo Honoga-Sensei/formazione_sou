@@ -1,12 +1,13 @@
+
 ---
+# Set host inside the playbook
 - name: Host connection
   hosts: nodes
   remote_user: vagrant
   become: yes
   tasks:
-    - debug:
-        msg: "Targeting {{ inventory_hostname }}"
 
+# Install docker 
     - name: Install pakage
       apt:
         name:
@@ -14,7 +15,8 @@
         state: latest
         update_cache: true
 
-    - name: Make dir
+# Copy necessary file from your pc to the VM
+    - name: Copy Dockerfile
       ansible.builtin.template:
         src: ./Dockerfile
         dest: ./
@@ -22,7 +24,7 @@
         group: vagrant
         mode: "0744"
 
-    - name: Make dir
+    - name: Copy migration.sh
       ansible.builtin.template:
         src: ./migration.sh
         dest: ./
@@ -30,12 +32,14 @@
         group: vagrant
         mode: "0744"
 
+# Start Docker
     - name: Start and enable Docker service
       service:
         name: docker
         state: started
         enabled: yes
 
+# Build Docker image with the Dockerfile
     - name: Build Docker image
       docker_image:
         name: migration_node
@@ -44,6 +48,7 @@
           path: ./
           dockerfile: Dockerfile
 
+# Start container
     - name: Start container
       docker_container:
         name: migration_node_container
@@ -52,6 +57,7 @@
           - "3000:3000"
         state: started            
 
+# Set timer for node1
     - name: Set up cron job to start the container node1
       cron:
         name: "Start migration_node_container"
@@ -66,6 +72,7 @@
         job: "sudo docker kill migration_node_container"
       when: inventory_hostname == "node1"
 
+# Set timer for node2
     - name: Set up cron job to start the container node2
       cron:
         name: "Start migration_node_container"
