@@ -1,0 +1,33 @@
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  # Define number of nodes
+  num_nodes = 2
+
+  # Configure base IP and subnet mask (adjust as needed)
+  base_ip = "192.168.50"
+  subnet_mask = "255.255.255.0"
+
+  (1..num_nodes).each do |i|
+    # Calculate IP address for e0ach node (assuming sequential numbering)
+    ip_address = "#{base_ip}.#{i}0"
+
+    config.vm.define "node#{i}" do |node|
+      node.vm.box = "bento/ubuntu-22.04"
+      node.vm.hostname = "node#{i}"
+
+      # Configure private network with static IP
+      node.vm.network "private_network", ip: ip_address, netmask: subnet_mask
+
+      # Configure Ansible provisioning
+      node.vm.provision "ansible" do |ansible|
+        ansible.become = true
+        ansible.playbook = "playbook.yml"
+        ansible.inventory_path = "inventory"
+        ansible.config_file = "ansible.cfg"
+        ansible.compatibility_mode = "2.0"
+      end
+    end
+  end
+end

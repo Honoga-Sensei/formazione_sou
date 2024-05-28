@@ -1,0 +1,82 @@
+---
+- name: Host connection
+  hosts: nodes
+  remote_user: vagrant
+  become: yes
+  tasks:
+    - debug:
+        msg: "Targeting {{ inventory_hostname }}"
+
+    - name: Install pakage
+      apt:
+        name:
+          - docker.io
+        state: latest
+        update_cache: true
+
+    - name: Make dir
+      ansible.builtin.template:
+        src: ./Dockerfile
+        dest: ./
+        owner: vagrant
+        group: vagrant
+        mode: "0744"
+
+    - name: Make dir
+      ansible.builtin.template:
+        src: ./migration.sh
+        dest: ./
+        owner: vagrant
+        group: vagrant
+        mode: "0744"
+
+    - name: Start and enable Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Build Docker image
+      docker_image:
+        name: migration_node
+        source: build
+        build:
+          path: ./
+          dockerfile: Dockerfile
+
+    - name: Start container
+      docker_container:
+        name: migration_node_container
+        image: migration_node
+        ports:
+          - "3000:3000"
+        state: started            
+
+    - name: Set up cron job to start the container node1
+      cron:
+        name: "Start migration_node_container"
+        minute: "*/2"
+        job: "sudo docker start migration_node_container"
+      when: inventory_hostname == "node1"
+
+    - name: Set up cron job to kill the container node1
+      cron:
+        name: "Kill migration_node_container"
+        minute: "1-59/2"
+        job: "sudo docker kill migration_node_container"
+      when: inventory_hostname == "node1"
+
+    - name: Set up cron job to start the container node2
+      cron:
+        name: "Start migration_node_container"
+        minute: "1-59/2"
+        job: "sudo docker start migration_node_container"
+      when: inventory_hostname == "node2"
+
+    - name: Set up cron job to kill the container node2
+      cron:
+        name: "Kill migration_node_container"
+        minute: "*/2"
+        job: "sudo docker kill migration_node_container"
+      when: inventory_hostname == "node2"
+
