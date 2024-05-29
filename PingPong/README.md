@@ -1,4 +1,4 @@
-# PING PONG
+n# PING PONG
 ## Introduction
 
 In this folder you can find a basic `Vagrant` project which with instrument like `Ansible` and `Docker` can be usefull to start stunding on process automatization.
@@ -17,13 +17,13 @@ Inside the directory there are few different files:
 
 `playbook.yml` contains all the Ansible commands configuration, like installing Docker, creating the container and managing it;     
 
-`inventory` contains info on the hosts which is used by the playbook to know which opne to target for the commands.     
+`inventory` contains info on the hosts which is used by the playbook to know which open to target for the commands.     
 
 All this together are all the file needed to make this project run.
 
 ## How to start
 
-First to make shure everything run as intended be shure to have `virtualbox`, `vagrant`, `ansible`, `docker`, and `sshpass` installed on the machine, if you dont have it installe, you can you the following shell command:
+First to make sure everything run as intended be sure to have `virtualbox`, `vagrant`, `ansible`, `docker`, and `sshpass` installed on the machine, if you dont have it installe, you can you the following shell command:
 
 `Virtualbox`: https://www.virtualbox.org/wiki/Downloads
 
