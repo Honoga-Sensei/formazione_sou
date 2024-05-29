@@ -3,7 +3,7 @@
 
 In this folder you can find a basic `Vagrant` project which with instrument like `Ansible` and `Docker` can be usefull to start stunding on process automatization.
 
-With this particular scenario we will set up 2 virtual machine with Vagrant, each one with a nodejs container managed by Docker, and, since we want the containers tu run only one at the time on the machines and swap every 60 seconds, the command will be managed by Ansible
+With this particular scenario we will set up 2 virtual machine with Vagrant, each one with a nodejs container managed by Docker, and, since we want the containers to run only one at the time on the machines and swap every 60 seconds, the command will be managed by Ansible
 
 ## Content
 
