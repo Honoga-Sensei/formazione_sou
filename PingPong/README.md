@@ -34,12 +34,12 @@ $ sudo apt install -y docker.io
 $ sudo apt install -y sshpass
 ```
 
-Once everything ins installed, you can moove through the shell to the directory containing the all the files, and just by using the shell command:
+Once everything is installed, you can move through the shell to the directory containing all the files, and just by using the shell command:
 ```
 $ vagrant up
 ```
 Once you run the command, vagrant will start creating and provisioning the machine with all the info inside the playbook, and in its turn crating the container through the docker file.
-Once everything is we will have 2 VM called `node1` and `node2` and in both of them there will be a container called `migration_node_container`. Now we just need to get inside the VM anc check if everything is running as intended with the following commands:
+Once everything is set up, we will have 2 VM called `node1` and `node2` and in both of them there will be a container called `migration_node_container`. Now we just need to get inside the VM and check if everything is running as intended with the following commands:
 
 ```
 $ vagrant ssh node1    #or node 2 depending which one you want to check; This allow us to connect in ssh with the VM
