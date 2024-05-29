@@ -13,7 +13,7 @@ Inside the directory there are few different files:
 
 `Dockerfile` inside this there are the configuration to create the image of the container;        
 
-`migration.sh` is a script which the Dockerfile refers to to get the scrip wich explain what the container must do once is running;     
+`migration.sh` is a script which the Dockerfile refers to, in order to get the scrip which explains what the container must do once is running;     
 
 `playbook.yml` contains all the Ansible commands configuration, like installing Docker, creating the container and managing it;     
 
