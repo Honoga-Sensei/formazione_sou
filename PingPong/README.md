@@ -1,4 +1,4 @@
-n# PING PONG
+# PING PONG
 ## Introduction
 
 In this folder you can find a basic `Vagrant` project which with instrument like `Ansible` and `Docker` can be usefull to start stunding on process automatization.
