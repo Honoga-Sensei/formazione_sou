@@ -23,14 +23,13 @@ All this together are all the file needed to make this project run.
 
 ## How to start
 
-Firstly you have to make sure everything runs as intended, so be sure to have `virtualbox`, `vagrant`, `ansible`, `docker`, and `sshpass` installed on the machine, if you don't have them installed, you can use the following link and shell command:
+Firstly you have to make sure everything runs as intended, so be sure to have `virtualbox`, `vagrant`, `ansible` and `sshpass` installed on the machine, if you don't have them installed, you can use the following link and shell command:
 
 `Virtualbox`: https://www.virtualbox.org/wiki/Downloads
 
 ```
 $ sudo apt install -y vagrant
 $ sudo apt install -y ansible
-$ sudo apt install -y docker.io
 $ sudo apt install -y sshpass
 ```
 
@@ -38,7 +37,7 @@ Once everything is installed, you can move through the shell to the directory co
 ```
 $ vagrant up
 ```
-Once you run the command, vagrant will start creating and provisioning the machine with all the info inside the playbook, and in its turn crating the container through the docker file.
+Once you run the command, vagrant will start creating and provisioning the machine with all the info inside the playbook, and in its turn creating the container through the docker file.
 Once everything is set up, we will have 2 VM called `node1` and `node2` and in both of them there will be a container called `migration_node_container`. Now we just need to get inside the VM and check if everything is running as intended with the following commands:
 
 ```
