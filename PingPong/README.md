@@ -23,7 +23,7 @@ All this together are all the file needed to make this project run.
 
 ## How to start
 
-First to make sure everything run as intended be sure to have `virtualbox`, `vagrant`, `ansible`, `docker`, and `sshpass` installed on the machine, if you dont have it installe, you can you the following shell command:
+Firstly you have to make sure everything runs as intended, so be sure to have `virtualbox`, `vagrant`, `ansible`, `docker`, and `sshpass` installed on the machine, if you don't have them installed, you can use the following link and shell command:
 
 `Virtualbox`: https://www.virtualbox.org/wiki/Downloads
 
