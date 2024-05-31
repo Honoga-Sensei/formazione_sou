@@ -11,9 +11,12 @@ Inside the directory there are few different files:
 
 `Vagrantfile` is the one containing the configurations for the VM;    
 
-`Dockerfile` inside this there are the configuration to create the image of the container;        
+`Dockerfile` inside this there are the configuration to create the image of the container;      
 
 `migration.sh` is a script which the Dockerfile refers to, in order to get the scrip which explains what the container must do once is running;     
+
+> [!NOTE]
+> I'm using the Dockerfile and migration.sh so that the container keep running, but be aware that you can achive the same adding a "command: sleep infinity" inside the ansible playbook when you are creating the container instead of using those 2 files.    
 
 `ansible.cfg` contains Ansible configuration
 
