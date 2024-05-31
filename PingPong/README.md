@@ -15,6 +15,8 @@ Inside the directory there are few different files:
 
 `migration.sh` is a script which the Dockerfile refers to, in order to get the scrip which explains what the container must do once is running;     
 
+`ansible.cfg` contains Ansible configuration
+
 `playbook.yml` contains all the Ansible commands configuration, like installing Docker, creating the container and managing it;     
 
 `inventory` contains info on the hosts which is used by the playbook to know which open to target for the commands.     
