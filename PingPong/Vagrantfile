@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   subnet_mask = "255.255.255.0"
 
   (1..num_nodes).each do |i|
-    # Calculate IP address for e0ach node (assuming sequential numbering)
+    # Calculate IP address for each node (assuming sequential numbering)
     ip_address = "#{base_ip}.#{i}0"
 
     config.vm.define "node#{i}" do |node|
