@@ -2,7 +2,7 @@
 
 ## Setup VM RockyLinux and Debian
 
-Install the virtual machines RockyLinux and Debian throught the .iso which can be found at the following web-sites:   
+Install the virtual machines RockyLinux and Debian through the .iso which can be found at the following web-sites:   
 RockyLinux https://rockylinux.org/download;      
 Debian https://www.debian.org.     
 
