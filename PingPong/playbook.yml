@@ -8,7 +8,7 @@
   tasks:
 
 # Install docker 
-    - name: Install pakage
+    - name: Install package
       apt:
         name:
           - docker.io
